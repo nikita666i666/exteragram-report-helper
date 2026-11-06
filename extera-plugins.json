@@ -1,3 +1,9 @@
+
 {
+  "schema": 1,
+  "name": "Nikita Plugins",
+  "description": "Personal exteraGram plugins",
+  "author": "Nikita",
+  "homepage": "https://github.com/nikita666i666/exteragram-report-helper",
   "plugins": []
 }
