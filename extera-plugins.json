@@ -5,5 +5,19 @@
   "description": "Personal exteraGram plugins",
   "author": "Nikita",
   "homepage": "https://github.com/nikita666i666/exteragram-report-helper",
-  "plugins": []
+  "plugins": [
+    {
+      "id": "report_helper",
+      "name": "Report Helper",
+      "description": "Помощник для подготовки жалоб",
+      "author": "Nikita",
+      "version": "1.0.0",
+      "app_version": ">=13.1.1",
+      "sdk_version": ">=1.4.4.3",
+      "category": ["tools", "privacy"],
+      "file": "plugins/report_helper/report_helper.plugin",
+      "sha256": "6586f30ce55ff6feca54fdd0a7d25546592c596548c8377da0293c81801889b8",
+      "size": 1329
+    }
+  ]
 }
