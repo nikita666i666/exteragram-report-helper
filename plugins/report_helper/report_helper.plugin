@@ -1,5 +1,5 @@
 
-from base_plugin import BasePlugin
+from base_plugin import BasePlugin, MenuItemData, MenuItemType
 
 __id__ = "report_helper"
 __name__ = "Report Helper"
@@ -14,7 +14,30 @@ __category__ = ["tools", "privacy"]
 class ReportHelperPlugin(BasePlugin):
 
     def on_plugin_load(self):
+        self.profile_item_id = self.add_menu_item(
+            MenuItemData(
+                menu_type=MenuItemType.PROFILE_ACTION_MENU,
+                text="Подготовить жалобу",
+                on_click=self.handle_profile_click,
+                icon="msg_info"
+            )
+        )
         self.logger.info("Report Helper загружен")
+
+    def handle_profile_click(self, context):
+        user = context.get("user")
+
+        if user:
+            user_id = getattr(user, "id", "неизвестен")
+            self.logger.info(
+                "Выбран пользователь для подготовки жалобы: %s",
+                user_id
+            )
+        else:
+            self.logger.info(
+                "Нажат пункт подготовки жалобы. Контекст: %s",
+                list(context.keys())
+            )
 
     def on_plugin_unload(self):
         self.logger.info("Report Helper выгружен")
