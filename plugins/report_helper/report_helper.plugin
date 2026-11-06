@@ -1,4 +1,5 @@
 
+from typing import Any, Dict
 from base_plugin import BasePlugin, MenuItemData, MenuItemType
 
 __id__ = "report_helper"
@@ -24,19 +25,18 @@ class ReportHelperPlugin(BasePlugin):
         )
         self.logger.info("Report Helper загружен")
 
-    def handle_profile_click(self, context):
-        user = context.get("user")
+    def handle_profile_click(self, context: Dict[str, Any]):
+        self.logger.info(
+            "Нажат пункт подготовки жалобы. Данные: %s",
+            list(context.keys())
+        )
 
+        user = context.get("user")
         if user:
-            user_id = getattr(user, "id", "неизвестен")
             self.logger.info(
-                "Выбран пользователь для подготовки жалобы: %s",
-                user_id
-            )
-        else:
-            self.logger.info(
-                "Нажат пункт подготовки жалобы. Контекст: %s",
-                list(context.keys())
+                "Выбран пользователь: %s (ID: %s)",
+                user.first_name,
+                user.id
             )
 
     def on_plugin_unload(self):
